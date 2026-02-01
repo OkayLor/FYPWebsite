@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Review</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/createreview.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <%- include('partials/navbar') %>
+    <!-- Main Content -->
+    <div class="container">
+        <div class="create-review-form mt-5">
+            <h2>Create Review</h2>
+            <!-- Search Bar -->
+            <div class="form-group">
+                <label for="searchGame">Search for a game:</label>
+                <input type="text" class="form-control" id="searchGame" placeholder="Enter game name">
+                <ul id="searchResults" class="mt-2">
+                    <!-- Search results will be displayed here as list items -->
+                </ul>
+            </div>
+            <div class="form-group">
+                <label for="selectedGame">Selected Game:</label>
+                <!-- Updated to use the "selected-game-box" div to display the selected game -->
+                <div class="selected-game-box">
+                    <div class="selected-game-text" id="selectedGameText"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="rating">Rating:</label>
+                <!-- Rating stars -->
+                <div class="rating-container">
+                    <div class="rating-stars" data-rating="1">&#9733;</div>
+                    <div class="rating-stars" data-rating="2">&#9733;</div>
+                    <div class="rating-stars" data-rating="3">&#9733;</div>
+                    <div class="rating-stars" data-rating="4">&#9733;</div>
+                    <div class="rating-stars" data-rating="5">&#9733;</div>
+                </div>
+                <input type="hidden" name="rating" id="rating" value="1">
+            </div>
+            <div class="form-group">
+                <label for="review">Review</label>
+                <textarea class="form-control" id="review" required></textarea>
+            </div>
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-primary">Submit Review</button>
+            </div>
+        </div>
+    </div>
+    <script src="/js/login.js"></script>
+    <script src="/js/createreview.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Information</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/infogames.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <%- include('partials/navbar') %>
+    
+    <div class="container text-center">
+        <h1>Game Information</h1>
+    </div>
+
+    <div class="container">
+        <!-- Display the game details -->
+        <div id="gameDetails">
+            <h2><%= game.title %></h2>
+            <img src="/images/<%= game.gameimage %>" class="game-image img-fluid">
+            <p><%= game.description %></p>
+
+            <p>Price: $<%= game.price %></p>
+
+            <p>Categories: <%= game.catname.join(', ') %></p>
+            <p>Year: <%= game.year %></p>
+
+            <!-- Latest Review Section -->
+            <div class="latest-review-box">
+                <% if (latestReview) { %>
+                    <p>Latest Review by: <%= latestReview.username %></p>
+                    <p>Rating: <%= latestReview.rating %></p>
+                    <p>Review: <%= latestReview.content %></p>
+                    <p>Likes: <%= latestReview.likes %></p>
+                    <p>Date: <%= new Date(latestReview.created).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %></p>
+                <% } else { %>
+                    <p>No reviews for this game yet.</p>
+                <% } %>
+                <button id="addReviewBtn" class="btn btn-primary">Add a Review about this Game</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-3">
+        <button id="backBtn" class="btn btn-outline-secondary">Back</button>
+        <button id="addToCartBtn" class="btn btn-primary">Add to Cart</button>
+    </div>
+
+    <script>
+        const gameid = '<%= game.gameid %>';
+        const title = '<%= encodeURIComponent(game.title) %>';
+    </script>
+
+    <script src="/js/infogames.js"></script>
+    <script src="/js/login.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+</body>
+<footer class="bg-dark text-white text-center py-3 mt-5">
+    <p style="font-size: 12px; margin-bottom: 0;">© 2024 RP Games. All rights reserved.</p>
+</footer>
+
+</html>

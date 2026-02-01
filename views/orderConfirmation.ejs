@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="/css/navbar.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    .confirmation-container {
+      text-align: center;
+      padding: 50px 20px;
+    }
+    .success-icon {
+      font-size: 80px;
+      color: #28a745;
+      margin-bottom: 20px;
+    }
+    .confirmation-message {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+    .action-buttons {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <%- include('partials/navbar') %>
+
+  <div class="container confirmation-container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <i class="fas fa-check-circle success-icon"></i>
+        <h1 class="confirmation-message">Order Confirmed!</h1>
+        <p class="lead">Thank you for your purchase. Your order has been successfully processed.</p>
+        <p>Your games have been added to your library and your cart has been cleared.</p>
+        
+        <div class="action-buttons">
+          <a href="/store" class="btn btn-primary btn-lg me-3">Continue Shopping</a>
+          <a href="/viewOwnedgames" class="btn btn-outline-primary btn-lg">View My Games</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+

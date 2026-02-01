@@ -1,0 +1,5 @@
+.navbar {
+  background-color: #f8f9fa;
+  animation: fadeInDown 1s ease;
+  font-family: 'Montserrat', sans-serif;
+}

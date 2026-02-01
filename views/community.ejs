@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Forum</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="/css/community.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <!-- Other meta tags and stylesheets -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+</head>
+
+<body>
+    <!-- Navbar -->
+    <%- include('partials/navbar') %>
+        
+    <!-- Hello -->
+    <div class="hello">
+        <div class="hello-overlay"></div>
+        <div class="container hello-content">
+            <h1 class="hello-title">Community Forum</h1>
+            <p class="hello-description">Join the discussion and share your thoughts on the latest games and gaming
+                experiences.</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="mt-5">
+            <h2 class="section-title">Welcome to the Community Forum</h2>
+            <p class="section-description">Explore and engage in discussions about games, game reviews, and gaming
+                experiences. Share your thoughts, ask questions, and connect with fellow gamers. Please respect
+                everyone in this community. Admin moderators hold the rights to remove offensive comments.</p>
+        </div>
+
+        <!-- Add the create review button -->
+        <div class="create-review-button">
+            <a href="#" id="create-review-button">Create Review</a>
+        </div>
+
+        <div class="form-group mt-4"> <!-- Add mt-4 class for margin top -->
+            <label for="sorting-dropdown">Sort By:</label>
+            <select class="form-control" id="sorting-dropdown">
+                <option value="rating">Highest Ratings</option>
+                <option value="upvote">Most Liked Ratings</option>
+            </select>
+        </div>
+
+        <div class="section-divider"></div> <!-- Add the section divider -->
+
+        <div id="community-forum-section">
+            <div id="reviews-container"></div>
+
+            <!-- Add the scroll-down arrow -->
+            <div class="scroll-down-arrow">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/community.js"></script>
+    <script src="/js/login.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

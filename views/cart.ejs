@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="/css/navbar.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    /* Add some custom styling for the cart items container */
+    .cart-items-container {
+      padding: 20px;
+    }
+
+    .cart-item-box {
+      border: 2px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 20px;
+      /* Add rounded corners for oval edges */
+    }
+
+    /* Additional styling for cart item details */
+    .cart-item-details {
+      font-size: 18px;
+    }
+
+    .cart-item-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .checkout-btn-container {
+      margin-top: 20px;
+    }
+
+    .card {
+      border: 2px solid #ccc;
+      border-radius: 20px;
+      /* Add rounded corners for oval edges */
+      margin-bottom: 10px;
+      transition: border-color 0.3s;
+      /* Add transition effect for border color change */
+    }
+
+    /* Add a custom class for selected items */
+    .card.selected {
+      border-color: #007bff;
+      /* Change the border color when selected */
+    }
+
+    /* Add some padding and margin for better spacing */
+    .card-body {
+      padding: 10px;
+    }
+
+    .card-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .card-text {
+      font-size: 18px;
+    }
+
+    /* Add custom styling to the checkout button */
+    .checkout-btn-container {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <%- include('partials/navbar') %>
+
+  <div class="container text-center mt-5">
+    <h1>Shopping Cart</h1>
+  </div>
+
+  <div class="container mt-3">
+    <div class="row" id="cartItems">
+      <!-- Cart items will be added dynamically here -->
+    </div>
+  </div>
+
+  <div class="container text-center mt-5">
+    <div id="totalPrice" class="mt-3"></div>
+  </div>
+
+  <!-- Checkout button -->
+  <div class="container text-center mt-5">
+    <div id="checkout-button-container">
+      <button id="checkout-button" class="btn btn-primary btn-lg" style="display: none;">Checkout</button>
+    </div>
+  </div>
+
+  <script src="/js/cart.js"></script>
+  <script src="/js/login.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,141 @@
+/* Add this to editprofile.css */
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+.profile-image-container {
+    width: 300px; /* Set your desired fixed width for the profile picture */
+    height: 300px; /* Set your desired fixed height for the profile picture */
+    border-radius: 50%; /* Make the container circular for a round profile picture */
+    overflow: hidden; /* Ensure that the image stays within the container */
+    margin-bottom: 20px; /* Add some spacing between the image and details */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.form-control {
+    margin-bottom: 15px;
+}
+
+#btn_update {
+    margin-right: 10px;
+}
+
+
+.file-input-container {
+    position: relative;
+}
+
+.file-input {
+    position: absolute;
+    left: 20px;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.btn-primary.image_input{
+    margin-left: 70px;
+}
+
+
+
+/* Media Query for Mobile and iPad */
+@media (max-width: 991.98px) {
+    /* ... Existing CSS ... */
+
+    .file-input-container {
+        /* For mobile and iPad, set the width and height to auto to stack the button on top */
+        width: auto;
+        height: auto;
+    }
+
+    .file-input {
+        /* Center the input when it is stacked on top */
+        display: block;
+        margin: 0 auto;
+    }
+
+    .profile-image-container {
+        /* For mobile and iPad, set the width and height to auto to stack the image on top */
+        width: auto;
+        height: auto;
+    }
+
+    .row {
+        /* For mobile and iPad, make the columns stack vertically */
+        flex-direction: column;
+    }
+
+    #image_container {
+        /* Center the image when it is stacked on top */
+        margin: 0 auto;
+    }
+
+    #image_input {
+        /* Center the input when it is stacked on top */
+        display: block;
+        margin: 0 auto;
+    }
+
+    .col-lg-8.col-md-12 {
+        /* Add some spacing between the image and details when stacked */
+        margin-top: 20px;
+    }
+}
+
+
+/* CSS for the "Choose Image" button and overlay */
+.profile-image-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(200, 200, 200, 0.6); /* Light gray overlay */
+    display: none;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .profile-image-container:hover .overlay {
+    display: flex;
+  }
+  
+  .image_input {
+    opacity: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the button */
+  }
+  
+  .image_input label {
+    display: block;
+    padding: 10px 20px;
+    background-color: #007bff; /* Blue color for the button */
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+  }

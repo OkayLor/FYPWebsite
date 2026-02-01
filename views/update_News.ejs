@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="/css/navbar.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <%- include('partials/navbar') %>
+
+
+    <!-- Add a container to hold the news list and form -->
+    <div class="container mt-5">
+        <!-- Form to create a new news item -->
+        <form id="createNewsForm" class="mb-4">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" required>
+            </div>
+            <div class="form-group">
+                <label for="content">Content</label>
+                <textarea class="form-control" id="content" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Create News</button>
+        </form>
+
+        <!-- Container to display all news -->
+        <div id="allNewsContainer" class="container"></div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            var settings = {
+                "url": "/user/self",
+                "method": "GET",
+                "timeout": 0,
+                "headers": {
+                    "Authorization": "Bearer " + localStorage['jwt']
+                },
+            };
+
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+                if (response.type === "Admin") {
+                    // Show Admin-specific navigation links
+                    document.getElementById('admin_panel_link').style.display = 'inline-block';
+                    document.getElementById('update_news_link').style.display = 'inline-block';
+                } else {
+                    window.location.href = '/store';
+                }
+            });
+
+            // Function to display all news
+            function displayAllNews() {
+                var allNewsSettings = {
+                    "url": "/allNews",
+                    "method": "GET",
+                    "timeout": 0,
+                };
+
+                $.ajax(allNewsSettings).done(function (newsData) {
+                    var allNewsContainer = $("#allNewsContainer");
+                    allNewsContainer.empty(); // Clear the container before displaying updated news list
+
+                    // Loop through each news item and add it to the container
+                    newsData.forEach(function (news) {
+                        var newsItemContainer = $("<div>").addClass("container mb-3 border border-secondary p-3");
+
+                        // Title and Content display
+                        var titleElement = $("<h4>").addClass("mb-2");
+                        titleElement.text(news.title);
+
+                        var contentElement = $("<p>");
+                        contentElement.text(news.content);
+
+                        newsItemContainer.append(titleElement);
+                        newsItemContainer.append(contentElement);
+
+                        // Delete button
+                        var deleteButton = $("<button>").addClass("btn btn-danger float-end");
+                        deleteButton.text("Delete");
+                        deleteButton.attr("data-id", news.newsid); // Use data-id instead of data-newsid
+                        deleteButton.on("click", deleteNews);
+
+                        newsItemContainer.append(deleteButton);
+
+                        allNewsContainer.append(newsItemContainer);
+                    });
+                });
+            }
+
+
+
+            // Function to handle delete news button click
+            function deleteNews() {
+                var newsId = $(this).data("id");
+
+                var deleteNewsSettings = {
+                    "url": "/news/" + newsId,
+                    "method": "DELETE",
+                    "timeout": 0,
+                    "headers": {
+                        "Authorization": "Bearer " + localStorage['jwt']
+                    },
+                };
+
+                $.ajax(deleteNewsSettings).done(function () {
+                    alert("Delete successful");
+                    displayAllNews(); // Refresh the news list after deletion
+                });
+            }
+
+
+            // Event listener for form submission to create new news
+            $("#createNewsForm").submit(function (event) {
+                event.preventDefault();
+                var title = $("#title").val();
+                var content = $("#content").val();
+                console.log(title + " " + content)
+
+                var newsObj = {
+                    title: title,
+                    content: content
+                }
+
+                var createNewsSettings = {
+                    "url": "/create/news",
+                    "method": "POST",
+                    "timeout": 0,
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "Authorization": "Bearer " + localStorage['jwt']
+                    },
+                    data: JSON.stringify(newsObj)
+                };
+                // Send the data to create new news
+                $.ajax(createNewsSettings).done(function () {
+                    // Clear the form fields after successful creation
+                    $("#title").val("");
+                    $("#content").val("");
+
+                    // Remove red border from the form container
+                    $("#createNewsForm").removeClass("border border-danger");
+                    alert("Create successful");
+                    // Refresh the news list after creation
+                    displayAllNews();
+                });
+            });
+
+            // Display all news on page load
+            displayAllNews();
+        });
+    </script>
+    <!-- Optional: Insert any other scripts or JavaScript files if required -->
+    <script src="/js/login.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

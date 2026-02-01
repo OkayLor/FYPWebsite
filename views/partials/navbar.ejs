@@ -1,0 +1,112 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="/">RP Games</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/store">Store</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/community">Community</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/news">News</a>
+                </li>
+                <li class="nav-item" id="login_item">
+                    <a class="nav-link" href="/login" id="login_btn">Login</a>
+                </li>
+                <li class="nav-item dropdown" id="user_dropdown" style="display: none;">
+                    <a class="nav-link dropdown-toggle" href="#" id="username" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false"></a>
+                    <div class="dropdown-menu" aria-labelledby="username">
+                        <a class="dropdown-item" href="/editProfile">Edit Profile</a>
+                        <a class="dropdown-item" href="/editReview">Your Reviews</a>
+                        <a class="dropdown-item" href="/viewOwnedgames">View Owned Games</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" id="logout_btn">Logout</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cart" id="cart_icon" style="display: none;">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                </li>
+                <li class="nav-item" id="admin_panel_link" style="display: none;">
+                    <a class="nav-link" href="/admin_panel" id="admin_panel_link_anchor">Admin Panel</a>
+                </li>
+                <li class="nav-item" id="update_news_link" style="display: none;">
+                    <a class="nav-link" href="/update_News">Update News</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var token = localStorage.getItem('jwt');
+        if (token) {
+            // User is logged in, show the relevant elements
+            $('#login_item').hide();
+            $('#user_dropdown').show();
+            $('#cart_icon').show();
+            $('#username').text(localStorage.getItem('username')); // Assuming you store the username in localStorage
+
+            // Check if the user is an admin
+            $.ajax({
+                url: '/user/self',
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                },
+                success: function(response) {
+                    if (response.type === 'Admin') {
+                        $('#admin_panel_link').show();
+                        $('#update_news_link').show();
+                    }
+                },
+                error: function(error) {
+                    console.error('Error fetching user details:', error);
+                }
+            });
+        } else {
+            // User is not logged in, hide the relevant elements
+            $('#login_item').show();
+            $('#user_dropdown').hide();
+            $('#cart_icon').hide();
+            $('#admin_panel_link').hide();
+            $('#update_news_link').hide();
+        }
+
+        // Handle logout
+        $('#logout_btn').click(function() {
+            localStorage.removeItem('jwt');
+            localStorage.removeItem('username');
+            window.location.href = '/login';
+        });
+
+        // Handle admin panel link click
+        $('#admin_panel_link_anchor').click(function(event) {
+            event.preventDefault();
+            var token = localStorage.getItem('jwt');
+            $.ajax({
+                url: '/admin_panel',
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                },
+                success: function() {
+                    window.location.href = '/admin_panel';
+                },
+                error: function() {
+                    alert('Unauthorized');
+                }
+            });
+        });
+    });
+</script>

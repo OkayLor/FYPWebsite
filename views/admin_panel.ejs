@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/admin_panel.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <%- include('partials/navbar') %>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="form-heading mt-5">Add New Game</div>
+        <form id="addNewGameForm" enctype="multipart/form-data" novalidate>
+            <div class="form-group">
+                <label for="gameImage">Game Image:</label>
+                <input type="file" class="form-control" id="gameImage" name="gameImage" accept="image/*" required>
+                <div class="invalid-feedback">
+                    Game image is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="gameTitle">Title:</label>
+                <input type="text" class="form-control" id="gameTitle" name="title" placeholder="Enter game title" required>
+                <div class="invalid-feedback">
+                    Game title is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="gameDescription">Description:</label>
+                <textarea class="form-control" id="gameDescription" name="description" rows="4" placeholder="Enter game description" required></textarea>
+                <div class="invalid-feedback">
+                    Game description is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="gameYear">Year:</label>
+                <input type="number" class="form-control" id="gameYear" name="year" placeholder="Enter game release year" required>
+                <div class="invalid-feedback">
+                    Game release year is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="gameCategory">Category:</label>
+                <div id="categoryList"></div>
+            </div>
+            <div class="form-group">
+                <label for="price">Price ($):</label>
+                <input type="number" step="0.01" min="0.01" class="form-control" id="price" name="price" placeholder="Enter game price" required>
+                <div class="invalid-feedback">
+                    Game price is required and must be greater than 0.
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Game</button>
+        </form>
+
+        <!-- Add New Category Form -->
+        <div class="form-heading mt-5">Add New Category</div>
+        <form id="addNewCategoryForm" class="needs-validation" novalidate>
+            <div class="form-group">
+                <label for="categoryName">Category Name:</label>
+                <input type="text" class="form-control" id="categoryName" name="catname" placeholder="Enter category name" required>
+                <div class="invalid-feedback">
+                    Category name is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="categoryDescription">Description:</label>
+                <textarea class="form-control" id="categoryDescription" name="description" rows="4" placeholder="Enter category description"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Category</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/admin_panel.js"></script>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p style="font-size: 16px; margin-bottom: 0;">Admin Panel - Be cautious of how you use it</p>
+        <p style="font-size: 12px; margin-bottom: 0;">© 2024 RP Games. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Form validation
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                var forms = document.getElementsByClassName('needs-validation');
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+/* Customize the height of the game image container */
+.game-image-container {
+    height: 300px; /* Set the fixed height here (adjust as needed) */
+  }
+  
+/* Make the game image span across the screen with fixed height */
+.game-image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Style the latest review box */
+.latest-review-box {
+  background-color: #f8f9fa;
+  padding: 15px;
+  margin-top: 20px;
+}
+
+/* Style the review elements inside the box */
+.latest-review-box p {
+  margin-bottom: 5px;
+}
+
+.latest-review-box p:last-child {
+  margin-bottom: 0;
+  font-style: italic;
+}
+
+.latest-review-box p:first-child {
+  font-weight: bold;
+}
+
+/* Style the date in the latest review */
+.latest-review-box p:last-child {
+  font-style: italic;
+}

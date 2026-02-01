@@ -1,0 +1,113 @@
+body {
+    overflow: hidden;
+}
+
+.navbar {
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.vh-100 {
+    height: 100vh;
+}
+
+
+/* .gradient-custom {
+    background-color: #f8f9fa;
+    background-image: linear-gradient(90deg, #f8f9fa 0%, #b1aeb6 100%);
+} */
+
+
+.gradient-custom {
+    background-color: #f8f9fa;
+    background-image: linear-gradient(90deg, #b1aeb6 100%, #f8f9fa 0%, #b1aeb6 100%);
+}
+
+
+.bg-dark {
+    background: linear-gradient(to right, #434343, #000000);
+}
+
+
+
+.card {
+    border: none;
+}
+
+.form-label {
+    color: #fff;
+}
+
+.btn-outline-light {
+    border-color: #fff;
+    color: #fff;
+}
+
+.btn-outline-light:hover {
+    background-color: #fff;
+    color: #3d0099;
+}
+
+.signup-link a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.custom-file {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.custom-file-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.custom-file-label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+.custom-file-input:focus~.custom-file-label {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.custom-file-input::before {
+    content: "No file chosen";
+}
+
+.custom-file-input[aria-describedby][multiple]::before {
+    content: "Selected files: " attr(aria-describedby);
+}
+
+.form-text {
+    font-size: 80%;
+    color: #6c757d;
+}
+
+.is-invalid {
+    border-color: #dc3545 !important;
+}
+
+.invalid-feedback {
+    color: #dc3545;
+}

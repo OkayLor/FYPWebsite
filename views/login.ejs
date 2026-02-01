@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome CSS (for icons) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="./css/loginejs.css" rel="stylesheet">
+
+    <title>Login Form</title>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <%- include('partials/navbar') %>
+
+    <!-- Main Content -->
+    <section class="vh-100 gradient-custom">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+
+                            <!-- Login Form -->
+                            <div id="login_form">
+                                <div class="mb-md-5 mt-md-4 pb-5">
+
+                                    <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                                    <p class="text-white-50 mb-5">Please login to continue browsing</p>
+
+                                    <div class="form-outline form-white mb-4">
+                                        <input type="text" id="typeEmailX" class="form-control form-control-lg" />
+                                        <label class="form-label" for="typeEmailX">Email / Username</label>
+                                    </div>
+
+                                    <div class="form-outline form-white mb-4">
+                                        <input type="password" id="typePasswordX"
+                                            class="form-control form-control-lg" />
+                                        <label class="form-label" for="typePasswordX">Password</label>
+                                    </div>
+
+                                    <button id="btn_login" class="btn btn-outline-light btn-lg px-5"
+                                        type="submit">Login</button>
+                                </div>
+
+                                <div>
+                                    <p class="mb-0">Don't have an account? <a href="#" id="btn_show_signup"
+                                            class="text-white-50 fw-bold">Sign Up</a>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Sign Up Form -->
+                            <div id="signup_form" style="display: none;">
+                                <div class="mb-md-5 mt-md-4 pb-5">
+
+                                    <h2 class="fw-bold mb-2 text-uppercase">Sign Up</h2>
+                                    <p class="text-white-50 mb-5">Please sign up to create an account</p>
+
+                                    <form>
+                                        <div class="form-outline form-white mb-4">
+                                            <input type="text" id="typeUsername" class="form-control form-control-lg" />
+                                            <label class="form-label" for="typeUsername">Username</label>
+                                        </div>
+
+                                        <div class="form-outline form-white mb-4">
+                                            <input type="email" id="typeEmail" class="form-control form-control-lg" />
+                                            <label class="form-label" for="typeEmail">Email</label>
+                                        </div>
+
+                                        <div class="form-outline form-white mb-4">
+                                            <input type="password" id="typePassword"
+                                                class="form-control form-control-lg" />
+                                            <label class="form-label" for="typePassword">Password</label>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="profilePic">Profile Picture:</label>
+                                            <input type="file" id="profilePic" name="profile_pic_url"
+                                                accept="image/*"><br>
+                                        </div>
+
+                                        <button id="btn_signup" class="btn btn-outline-light btn-lg px-5"
+                                            type="button">Sign Up</button>
+                                    </form>
+                                </div>
+
+                                <div>
+                                    <p class="mb-0">Already have an account? <a href="#" id="btn_show_login"
+                                            class="text-white-50 fw-bold">Login</a>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="./js/loginejs.js"></script>
+    <script src="./js/client.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

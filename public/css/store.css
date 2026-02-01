@@ -1,0 +1,119 @@
+/* Container for the game */
+.game-container {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd; /* Consistent border */
+  border-radius: 5px; /* Rounded corners for the border */
+  padding: 15px; /* Consistent padding inside the card */
+  background-color: #fff; /* Background color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Box shadow for depth */
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+}
+
+/* Ensures the game image fits within the container and maintains aspect ratio */
+.game-image {
+  width: 100%;
+  height: 200px; /* Ensures all images are the same height */
+  object-fit: cover; /* Ensures the image covers the entire container while maintaining aspect ratio */
+  border-radius: 5px; /* Ensure image fits within rounded corners */
+  border: 1px solid #ddd; /* Grey border around the image */
+}
+
+/* Overlay for the hover effect */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 5px; /* Ensure overlay fits within rounded corners */
+}
+
+/* Show overlay on hover */
+.game-container:hover .overlay {
+  opacity: 1;
+}
+
+/* Style for the button */
+.btn-primary {
+  margin-top: 10px;
+}
+
+.btn-primary:hover {
+  background-color: #0044cc;
+}
+
+/* Platform and categories list styles */
+.platforms,
+.categories {
+  text-align: left;
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 10px;
+}
+
+/* Flexbox to ensure equal height for containers */
+.card {
+  border: 1px solid #ddd; /* Grey border around the card */
+  border-radius: 5px; /* Rounded corners for the border */
+  padding: 15px; /* Consistent padding inside the card */
+  background-color: #fff; /* Background color */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-grow: 1;
+  justify-content: space-between; /* Ensures even distribution of content */
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  margin-bottom: 10px;
+  flex-grow: 1;
+}
+
+/* Ensuring all game containers have the same height */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust the minimum width as needed */
+  gap: 20px; /* Spacing between containers */
+  padding: 20px; /* Ensure even padding around the grid */
+}
+
+@media (min-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for medium screens */
+  }
+}
+
+@media (min-width: 992px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for large screens */
+  }
+}
+
+/* Ensuring the containers are even at the bottom */
+.game-container .game-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}

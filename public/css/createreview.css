@@ -1,0 +1,71 @@
+/* Custom styling specific to createReviews.html page */
+.create-review-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.create-review-form h2 {
+    margin-bottom: 20px;
+}
+
+.create-review-form .form-group label {
+    font-weight: bold;
+}
+
+.create-review-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.create-review-form .btn-primary {
+    width: 100%;
+}
+
+/* Added style for the selected game box */
+.selected-game-box {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+/* Rating stars */
+.rating-container {
+    display: flex;
+    align-items: center;
+}
+
+.rating-stars {
+    font-size: 24px;
+    color: #ccc;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.rating-stars:hover,
+.rating-stars.checked {
+    color: #ffac33;
+}
+
+/* Search results styles */
+#searchResults {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.search-result-item {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.search-result-item:hover {
+    background-color: #f2f2f2;
+    color: #007bff;
+}

@@ -1,0 +1,71 @@
+<!-- store.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Search</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="/css/store.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <%- include('partials/navbar') %>
+
+    <div class="container text-center">
+        <h1>Game Search</h1>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control rounded-pill border-gray" id="search-input" placeholder="Search by Title" aria-label="Search" aria-describedby="search-button">
+            <button class="btn btn-outline-secondary rounded-pill" type="button" id="search-button"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="btn-group mb-3" role="group">
+            <button type="button" class="btn btn-secondary filter-btn" data-filter="all">All Games</button>
+            <button type="button" class="btn btn-secondary filter-btn" data-filter="release">Release Date</button>
+            <button type="button" class="btn btn-secondary filter-btn" data-filter="highest">Highest Price</button>
+            <button type="button" class="btn btn-secondary filter-btn" data-filter="lowest">Lowest Price</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="grid-container" id="results">
+            <% if (games && games.length > 0) { %>
+                <% games.forEach(function(game) { %>
+                    <div class="game-container" data-release="<%= game.year %>" data-price="<%= game.price %>">
+                        <div class="image-container">
+                            <img src="/images/<%= game.gameimage %>" class="game-image img-fluid">
+                            <div class="overlay">
+                                <div class="categories">
+                                    <% game.categories.forEach(function(category) { %>
+                                        <li>- <%= category %></li>
+                                    <% }); %>
+                                </div>
+                                <a href="/store/info/<%= encodeURIComponent(game.title) %>" class="btn btn-primary">Find Out More</a>
+                            </div>
+                        </div>
+                        <h2><%= game.title %></h2>
+                        <p>Price: $<%= game.price %></p>
+                        <div>Categories: </div>
+                        <div class="categories">
+                            <% game.categories.forEach(function(category) { %>
+                                <div><%= category %></div>
+                            <% }); %>
+                        </div>
+                        <p>Year: <%= game.year %></p>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p>No games found.</p>
+            <% } %>
+        </div>
+    </div>
+
+    <script src="/js/client.js"></script>
+    <script src="/js/store.js"></script>
+    <script src="/js/login.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
